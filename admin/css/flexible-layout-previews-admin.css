@@ -1,0 +1,31 @@
+.es-acf-fc-image-wrap {
+  position: absolute;
+  right: 100%;
+  bottom: 0;
+  background: #2F353E;
+  border-radius: 5px;
+  padding: 20px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  display: none;
+}
+
+.es-acf-fc-image-wrap img {
+  max-width: 50vw;
+}
+
+.es-acf-fc-image-wrap.preview-visible {
+  display: block;
+}
+
+@media only screen and (max-width: 782px) {
+  .es-acf-fc-image-wrap.preview-visible {
+    display: none;
+  }
+}
+
+/* Override ACF Popup styles */
+.acf-fc-popup {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
