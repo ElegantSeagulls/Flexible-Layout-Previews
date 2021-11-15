@@ -4,6 +4,7 @@
 	/**
 	 * Custom alphabetical sort function for our list of layouts.
 	 *
+	 * @since 1.2.0
 	 * @param {JQuery} a The first element for comparison.
 	 * @param {JQuery} b The second element for comparison.
 	 *

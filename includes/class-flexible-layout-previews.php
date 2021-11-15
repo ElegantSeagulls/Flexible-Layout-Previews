@@ -69,7 +69,7 @@ class Flexible_Layout_Previews {
 		if ( defined( 'FLEXIBLE_LAYOUT_PREVIEWS_VERSION' ) ) {
 			$this->version = FLEXIBLE_LAYOUT_PREVIEWS_VERSION;
 		} else {
-			$this->version = '1.0.0';
+			$this->version = '1.2.0';
 		}
 		$this->plugin_name = 'flexible-layout-previews';
 

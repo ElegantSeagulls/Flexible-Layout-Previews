@@ -10,7 +10,7 @@
  * Plugin Name:       Flexible Layout Previews
  * Plugin URI:        https://elegantseagulls.com
  * Description:       Allows you to save images for previews to display to content editors when they are selecting new Flexible Layouts.
- * Version:           1.1.0
+ * Version:           1.2.0
  * Author:            Elegant Seagulls
  * Author URI:        https://elegantseagulls.com
  * License:           GPL-2.0+
@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version (uses SemVer).
  */
-define( 'FLEXIBLE_LAYOUT_PREVIEWS_VERSION', '1.1.0' );
+define( 'FLEXIBLE_LAYOUT_PREVIEWS_VERSION', '1.2.0' );
 
 /**
  * The code that runs during plugin activation.

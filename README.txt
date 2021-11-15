@@ -2,7 +2,7 @@
 Tags: acf, pro, flexible, layouts, previews
 Requires at least: 5.8
 Tested up to: 5.8
-Stable tag: 1.0.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,6 +13,11 @@ To use previews, the preview images may be placed inside `wp-content/themes/{the
 `{flexible_layout_id}_{layout_id}.jpg`. (jpgs must be used).
 
 == Changelog ==
+
+= 1.2.0 =
+Enhancements:
+
+* Add sort so layouts are presented in alphabetical order.
 
 = 1.1.0 =
 Enhancements:
