@@ -2,10 +2,28 @@
 	'use strict';
 
 	/**
+	 * Custom alphabetical sort function for our list of layouts.
+	 *
+	 * @since 1.2.0
+	 * @param {JQuery} a The first element for comparison.
+	 * @param {JQuery} b The second element for comparison.
+	 *
+	 * @returns {number} Direction to sort, > 0 sort b before a, < 0 sort a before b.
+	 */
+	function alphabetical_sort( a, b ){
+		return ( $( b ).text().toLowerCase() ) < ( $( a ).text().toLowerCase() ) ? 1 : -1;
+	}
+
+	/**
 	 * Add the required html/attributes needed to display previews
 	 * inside the ACF Popup.
 	 */
 	$( document ).on( 'click', 'a[data-name="add-layout"]', function() {
+		// Sort layouts.
+		$(".acf-fc-popup ul li")
+			.sort(alphabetical_sort)
+			.appendTo('.acf-fc-popup ul ');
+
 		$( 'span.es-acf-fc-preview' ).each( function( index, el ) {
 			var preview = $( el ).data( 'preview' );
 			var layout = $( el ).data( 'layout' );
