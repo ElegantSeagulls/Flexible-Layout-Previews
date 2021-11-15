@@ -13,9 +13,6 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
  * @package    Flexible_Layout_Previews
  * @subpackage Flexible_Layout_Previews/admin
  * @author     Elegant Seagulls <dan@elegantseagulls.com>
@@ -55,6 +52,27 @@ class Flexible_Layout_Previews_Admin {
 	}
 
 	/**
+	 * Return the required markup to be used in filtering the ACF Layout Title.
+	 *
+	 * @since 1.1.0
+	 * @param string $layout_name The layout identifier name.
+	 * @param string $preview_url The url to the preview image.
+	 * @param string $layout_label The layout label name.
+	 *
+	 * @return string The required markup.
+	 */
+	private function get_preview_title_markup( $layout_name, $preview_url, $layout_label ) {
+		$html  = '<span class="es-acf-fc-preview no-preview"';
+		$html .= ' data-layout="' . $layout_name . '"';
+		$html .= ' data-preview="' . $preview_url . '"';
+		$html .= '>';
+		$html .= $layout_label;
+		$html .= '</span>';
+
+		return $html;
+	}
+
+	/**
 	 * Checks if the current flexible layout has a preview image available.
 	 * If there is a image available, modifies the title to include html
 	 * markup for the preview URL.
@@ -73,16 +91,16 @@ class Flexible_Layout_Previews_Admin {
 		$layout_slug       = $page_builder_name . '_' . $layout_name;
 		$layout_label      = $layout['label'];
 
-		$preview_relative = get_template_directory() . '/layouts/previews/' . $layout_slug . '.jpg';
-		$preview_url      = get_template_directory_uri() . '/layouts/previews/' . $layout_slug . '.jpg';
+		$preview_relative        = get_template_directory() . '/layouts/previews/' . $layout_slug . '.jpg';
+		$preview_global_relative = get_template_directory() . '/layouts/previews/_' . $layout_name . '.jpg';
 
+		// Check if a specific preview is set for the page builder and component.
 		if ( file_exists( $preview_relative ) ) {
-			$title  = '<span class="es-acf-fc-preview no-preview"';
-			$title .= ' data-layout="' . $layout_name . '"';
-			$title .= ' data-preview="' . $preview_url . '"';
-			$title .= '>';
-			$title .= $layout_label;
-			$title .= '</span>';
+			$preview_url = get_template_directory_uri() . '/layouts/previews/' . $layout_slug . '.jpg';
+			$title       = $this->get_preview_title_markup( $layout_name, $preview_url, $layout_label );
+		} elseif ( file_exists( $preview_global_relative ) ) { // Check if there is a global component preview set.
+			$preview_url = get_template_directory_uri() . '/layouts/previews/_' . $layout_name . '.jpg';
+			$title       = $this->get_preview_title_markup( $layout_name, $preview_url, $layout_label );
 		}
 
 		return $title;
